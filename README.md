@@ -1,1 +1,2 @@
-# CafeCiro-Website
+This is a website of a sample cafe that i recently made...
+so go ahead and check it out :)
