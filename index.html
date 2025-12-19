@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Cairo | Serving Comfort</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #8B4513;
+            --secondary: #D4A574;
+            --accent: #E6B87B;
+            --light: #F8F0E3;
+            --dark: #3C2F2F;
+            --success: #5D8C6F;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Special Banner */
+        .special-banner {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(60, 47, 47, 0.7), rgba(60, 47, 47, 0.5)),
+                url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(60, 47, 47, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: 'Georgia', serif;
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(247, 244, 244, 0.6);
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 60px 5%;
+            background: white;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: var(--light);
+            transition: transform 0.3s;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Bestsellers Carousel */
+        .bestsellers {
+            padding: 80px 5%;
+            background: var(--light);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            min-width: 280px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        /* Reviews */
+        .reviews {
+            padding: 80px 5%;
+            background: white;
+        }
+
+        .review-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .stars {
+            color: gold;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .hours p {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            margin-left: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons i {
+            color: beige;
+        }
+
+        .social-icon:hover {
+            background-color: #8B4513;
+        }
+
+        /* Floating Button */
+        .floating-order {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            .tagline {
+                font-size: 1.4rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .hero-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Special Offer Banner -->
+    <div class="special-banner">
+        🎉 TODAY'S SPECIAL: Tiramisu + Any Shake - 20% OFF! 🎉
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">Cafe Cairo</h1>
+            <h2 class="tagline">Where Every Craving Finds Its Flavour</h2>
+            <p class="description">
+                From Cheesy Burgers and Oven-Fresh Pizzas to Refreshing Juices and Creamy Shakes- Cafe Cairo brings
+                together bold flavour and cozy vibes, making every visit worth savouring.
+            </p>
+
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i> Let's Eat
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-calendar-alt"></i> Book a Table
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestsellers Section -->
+    <section class="bestsellers">
+        <h2 class="section-title">View Our Menu</h2>
+        <div class="carousel">
+            <div class="product-card">
+                <div class="product-image">🍔</div>
+                <div class="product-info">
+                    <h3>Burgers</h3>
+                    <p>Veggie Stack<br>Cheesy Affair<br>Grill Thrill</p>
+                    <p class="price">₹99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🍕</div>
+                <div class="product-info">
+                    <h3>Pizzas</h3>
+                    <p>Cheese Storm<br>Veg Loaded<br>Midnight Margherita</p>
+                    <p class="price">₹189</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🍜</div>
+                <div class="product-info">
+                    <h3>Pastas</h3>
+                    <p>Creamy Alfredo<br>Red Sauce<br>Desi Penne</p>
+                    <p class="price">₹169</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🍹</div>
+                <div class="product-info">
+                    <h3>Juices</h3>
+                    <p>Citrus Fruit Splash<br>Sunrise Detox<br>Tropical Reset</p>
+                    <p class="price">₹89</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🧋</div>
+                <div class="product-info">
+                    <h3>Shakes</h3>
+                    <p>Choco Overdose<br>Cookie Chaos<br>Vanilla Cloud</p>
+                    <p class="price">₹89</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🥧</div>
+                <div class="product-info">
+                    <h3>Baked Treats</h3>
+                    <p>Choco Lava Cake<br>Classic Tiramisu<br>Nutella Pancakes</p>
+                    <p class="price">₹119</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="review-card">
+            <div class="stars">
+                ⭐⭐⭐⭐⭐
+            </div>
+            <p>"Cafe Cairo is just worth it!!"</p>
+            <p class="customer">- Ananya P.</p>
+        </div>
+        <div class="review-card">
+            <div class="stars">
+                ⭐⭐⭐⭐
+            </div>
+            <p>"The atmosphere is cozy with amazing shakes. Must try!"</p>
+            <p class="customer">- Saransh S.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>Social Media</h3>
+            <p>You can find latest updates on</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-section hours">
+            <h3>Opening Hours</h3>
+            <p><span>Mon-Fri</span> <span>7:00 AM - 8:00 PM</span></p>
+            <p><span>Saturday</span> <span>8:00 AM - 9:00 PM</span></p>
+            <p><span>Sunday</span> <span>8:00 AM - 6:00 PM</span></p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Visit Us</h3>
+            <p>123 Majnu ka Tilla<br>New Delhi, Uttar Pradesh</p>
+            <p>📞 (123) 456-7890</p>
+            <p>✉️ hello@cafecairo.com</p>
+        </div>
+    </footer>
+
+    <!-- Floating Order Button -->
+    <a href="#" class="floating-order">
+        <i class="fas fa-bolt"></i> Order Now
+    </a>
+
+    <script>
+        // Simple carousel auto-scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.querySelector('.carousel');
+            let scrollAmount = 0;
+
+            function autoScroll() {
+                if (carousel) {
+                    scrollAmount += 280;
+                    if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+                        scrollAmount = 0;
+                    }
+                    carousel.scrollTo({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            setInterval(autoScroll, 3000);
+
+            // Button hover effects
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                btn.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
